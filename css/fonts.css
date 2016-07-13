@@ -1,0 +1,14 @@
+/*
+	Properti font. Bisa ditambah atau dikurangi sesuai kebutuhan.
+	Gunakan file css ini untuk menampilkan font. Baik itu font yang ditambahkan secara manual 
+	maupun font yang berasal dari luar seperti Google Fonts.
+*/
+
+@font-face{
+	font-family:'Roboto';
+	src:local('Roboto'),
+		url('../fonts/Roboto-Regular.ttf') format('truetype'),
+		url('../fonts/Roboto-Bold.ttf') format('truetype'),
+		url('../fonts/Roboto-Italic.ttf') format('truetype'),
+		url('../fonts/Roboto-BoldItalic.ttf') format('truetype');
+}
