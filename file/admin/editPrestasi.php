@@ -35,32 +35,32 @@ $prestasi->konek_db();
 
 
             <div class="form-group">
-                  <label for="judulinfo" class="col-md-6 control-label">Judul Prestasi</label>
-                  <div class="col-md-6">
+                  <label for="judulinfo" class="col-md-2">Judul Prestasi</label>
+                  <div class="col-md-10">
 
                       <input type="text" class="form-control" name="judulinfo" maxlength="60" value="<?php echo $row['JUDUL_PRESTASI'];?>" required/>
                   </div>
             </div>
 
             <div class="form-group">
-                  <label for="info" class="col-md-6 control-label">Prestasi</label>
-                  <div class="col-md-6">
+                  <label for="info" class="col-md-2">Prestasi</label>
+                  <div class="col-md-10">
                       <!--<input type="text" class="form-control" name="info" required/>-->
                       <textarea class="form-control" name="info" value="<?php echo $row['BERITA'];?>"><?php echo $row['PRESTASI'];?></textarea>
                   </div>
             </div>
 
             <div class="form-group">
-                  <label for="tgl" class="col-md-6 control-label">Tanggal</label>
-                  <div class="col-md-6">
+                  <label for="tgl" class="col-md-2">Tanggal</label>
+                  <div class="col-md-10">
                       <input type="date" class="form-control" name="tgl" maxlength="10" value="<?php echo $row['TANGGAL'];?>" required/>
                   </div>
             </div>
 
             <div class="form-group">
-                  <label for="namafilefoto" class="col-md-6 control-label">Photo</label>
+                  <label for="namafilefoto" class="col-md-2">Photo</label>
 
-                  <div class="col-md-6">
+                  <div class="col-md-10">
                       <input type="file" name="namafilefoto" id="foto" value="<?php echo $row['PHOTO'];?>" />
                   </div>
             </div>

@@ -88,7 +88,7 @@ $b=$_POST['peran'];
 				                  <td><?php echo $row['NAMA_MHS']; ?></td>
 				                  <td><?php echo $row['USERNAME']; ?></td>
 				                  <td><?php echo $row['PASSWORD']; ?></td>
-				                  <td><a href="tatausaha.php?a=editMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-folder-open"></a> </td>
+				                  <td><a href="tatausaha.php?a=editMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-danger fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-info fa fa-folder-open"></a> </td>
 				                </tr>
 				                
 				                <?php
@@ -131,7 +131,7 @@ $b=$_POST['peran'];
 				                  <td><?php echo $row['USERNAME']; ?></td>
 				                  <td><?php echo $row['PASSWORD']; ?></td>
 				                  <td><?php echo $row['STATUS_VALIDASI']; ?></td>
-				                  <td><a href="admin.php?content=inc/adminModel.php&a=statusValidasi&id=<?php echo $row['ID_INDUSTRI']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=editMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-folder-open"></a> </td>
+				                  <td><a href="admin.php?content=inc/adminModel.php&a=statusValidasi&id=<?php echo $row['ID_INDUSTRI']; ?>" class="btn btn-success fa fa-check-square"></a>  <a href="tatausaha.php?a=editMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-danger fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailMahasiswa&id=<?php echo $row['ID_MHS']; ?>" class="btn btn-info fa fa-folder-open"></a> </td>
 				                </tr>
 				                
 				                <?php

@@ -1,6 +1,6 @@
 <?php 
-    // $mysqli = new mysqli("localhost","root","","login");
-    $loker = $mysqli->query("SELECT * FROM loker");
+    $mysqli = new mysqli("localhost","root","","login");
+    $beasiswa = $mysqli->query("SELECT * FROM beasiswa");
  ?>
 
 <div class="container-fluid">
@@ -8,10 +8,11 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                <i class="fa fa-table"></i> Daftar Lowongan Kerja
+                <i class="fa fa-child"></i> Daftar Beasiswa
             </h1>
         </div>
     </div>
+
     <?php 
     if ($user->get_role() != 'mahasiswa') { ?>
     <div class="row">
@@ -31,7 +32,7 @@
             </table>
         </div>
         <div class="col-md-6 text-right">
-            <form action="<?php echo $user->get_role(); ?>.php?content=<?php echo "../semua/inputlowongan.php"?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            <form action="<?php echo $user->get_role(); ?>.php?content=<?php echo "../semua/inputbeasiswa.php"?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 <button class="btn btn-primary">Tambah</button>
             </form>
         </div>
@@ -45,11 +46,10 @@
                 <thead>
                     <tr class="text-center">
                         <td>No</td>
-                        <td>Posisi</td>
-                        <td>Minimal Gaji</td>
-                        <td>Tempat</td>
-                        <td>Tanggal Mulai Pendaftaran</td>
-                        <td>Tanggal Akhir Pendaftaran</td>
+                        <td>Nama Beasiswa</td>
+                        <td>Kuota</td>
+                        <td>Awal Pendaftaran</td>
+                        <td>Akhir Pendaftaran</td>
                         <td>View Detail</td>
                     </tr>
                 </thead>
@@ -57,20 +57,20 @@
                 <tbody>
                 <?php 
                     $i=1;
-                    while ($lkr = $loker->fetch_assoc()) {
-                        $date1 = date_create($lkr['TANGGAL_MULAI']);
-                        $date2 = date_create($lkr['TANGGAL_AKHIR']);
+                    while ($bsw = $beasiswa->fetch_assoc()) {
+                        $date1 = date_create($bsw['tglmulaibeasiswa']);
+                        $date2 = date_create($bsw['tglakhirbeasiswa']);
+                        $id = $bsw['idbeasiswa'];
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $i; ?></td>
-                      <td><?php echo $lkr['POSISI']; ?></td>
-                      <td><?php echo $lkr['GAJI']; ?></td>
-                      <td><?php echo $lkr['TEMPAT']; ?></td>
+                      <td><?php echo $bsw['judulbeasiswa']; ?></td>
+                      <td><?php echo $bsw['kuotabeasiswa']; ?></td>
                       <td><?php echo date_format($date1,"d F Y"); ?></td>
                       <td><?php echo date_format($date2,'d F Y'); ?></td>
-                      <td class="text-center"><a href="#">View Detail</a></td>
+                      <td class="text-center"><a href="<?php echo $user->get_role(); ?>.php?content=../semua/detailbeasiswa.php&id=<?php echo $id; ?>">View Detail</a></td>
                     </tr>
-                    <?php $i++;} ?>
+                <?php $i++;} ?>
                 </tbody>
             </table>
         </div>
