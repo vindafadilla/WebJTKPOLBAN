@@ -9,6 +9,23 @@
     </div>
 
     <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="smt">Angkatan :</label>
+                <select class="form-control" id="smt">
+                    <option>2009</option>
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-12 dataTable_wrapper">
             <table class="table table-striped table-bordered " id="datatabel">
                 <thead>

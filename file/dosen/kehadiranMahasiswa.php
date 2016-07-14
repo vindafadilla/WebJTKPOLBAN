@@ -10,6 +10,27 @@
   </div>
 
   <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="smt">Mata Kuliah :</label>
+                <select class="form-control" id="smt">
+                    <option>Pengantar Perangkat Lunak</option>
+                    <option>Sistem Informasi</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="smt">Kelas :</label>
+                <select class="form-control" id="smt">
+                    <option>2A - D3</option>
+                    <option>2B - D3</option>
+                </select>
+            </div>
+        </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-12">
       <table class="table table-striped table-bordered " id="datatabel">
         <thead>

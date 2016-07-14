@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+    if($_SESSION['role'] != 'dosen'){
+        header("location:../../index.php");
+    }
+    include('class-dosen.php');
+    if(isset($_GET['logout'])){
+        $user = new Dosen();    
+        $user->logout('role');
+        header("location:dosen.php");
+    }
+    $user = new Dosen();
+    $user->konek_db();
+    $user->set_data_dosen($_SESSION['user'], $_SESSION['pass'], $mysqli);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +52,7 @@ else{
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> PT. Rony Berjaya <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user->get_nama(); ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -49,7 +65,7 @@ else{
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="dosen.php?logout=1"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -64,35 +80,27 @@ else{
                     <li class="sidebar-profile-edit">
                       <ul class="identity-profile">
                         <li class="text-center">
-                          <b>PT. Rony Berjaya</b>
+                          <b><?php echo $user->get_nama(); ?></b>
                         </li>
                         <li class="text-center">
-                          <i>Administrator Dosen</i>
+                          <i><?php echo $user->get_identitas(); ?></i>
                         </li>
                       </ul>
                     </li>
                     <li class="active">
                       <a class="active" href="dosen.php?content=<?php echo "dashboard.php"?>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li><a href="dosen.php?content=<?php echo "searchalumni.php"?>"><i class="fa fa-fw fa-search"></i> Search Alumni</a>
+                    <li><a href="dosen.php?content=<?php echo "../semua/searchalumni.php"?>"><i class="fa fa-fw fa-search"></i> Search Alumni</a>
                     </li>
-                    <li><a href="dosen.php?content=<?php echo "loker.php"?>"><i class="fa fa-fw fa-table"></i> Lowongan Pekerjaan</a>
+                    <li><a href="dosen.php?content=<?php echo "../semua/loker.php"?>"><i class="fa fa-fw fa-table"></i> Lowongan Pekerjaan</a>
                     </li>
-                    <li><a href="dosen.php?content=<?php echo "beasiswa.php"?>"><i class="fa fa-fw fa-child"></i> Beasiswa</a>
+                    <li><a href="dosen.php?content=<?php echo "../semua/beasiswa.php"?>"><i class="fa fa-fw fa-child"></i> Beasiswa</a>
+                    </li>
+                     <li>
+                        <a href="dosen.php?content=<?php echo "../semua/calendaracademic.php"?>"><i class="fa fa-fw fa-calendar"></i> Calendar Academic</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Forms <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                           <li>
-                              <a href="dosen.php?content=<?php echo "lowongan.php"?>">Input Lowongan Pekerjaan</a>
-                           </li>
-                           <li>
-                              <a href="dosen.php?content=<?php echo "inputBeasiswa.php"?>">Input Beasiswa</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="dosen.php?content=<?php echo "calendaracademic.php"?>"><i class="fa fa-fw fa-calendar"></i> Calendar Academic</a>
+                        <a href="dosen.php?content=<?php echo "../semua/saran.php"?>"><i class="fa fa-fw fa-comments"></i> Saran</a>
                     </li>
                 </ul>
             </div>
