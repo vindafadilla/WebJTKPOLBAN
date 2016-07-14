@@ -12,6 +12,7 @@
 					Angkatan
 				</div>
 				<div class="col-md-10">
+
 					<select name="ANGKATAN" class="form-control">
 						<option>- Pilihan -</option>
 						<?php
@@ -28,6 +29,7 @@
 					?>
 					</select>
 
+					<br />
 				</div>
 			</div>
 
@@ -53,7 +55,7 @@
 						<!-- <option value="dosen">Dosen</option>
 						<option value="mahasiswa">Mahasiswa</option> -->
 					</select>
-
+					<br />
 				</div>
 			</div>
 
@@ -144,7 +146,7 @@
 				                  <td><?php echo $row['SAKIT']; ?></td>
 				                  <td><?php echo $row['IZIN']; ?></td>
 				                  <td align="center"><?php echo $row['ALFA']; ?></td>
-				                  <td><a href="tatausaha.php?a=editAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-warning fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-warning fa fa-folder-open"></a> </td>
+				                  <td><a href="tatausaha.php?a=editAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-danger fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_MHS']; ?>" class="btn btn-info fa fa-folder-open"></a> </td>
 				                </tr>
 				                
 				                <?php

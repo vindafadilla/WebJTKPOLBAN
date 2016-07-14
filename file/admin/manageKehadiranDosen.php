@@ -51,7 +51,7 @@
 				                  <td><?php echo $row['JUMLAH_HADIR']; ?></td>
 				                  <td><?php echo $row['JUMLAH_ALFA']; ?></td>
 			
-				                  <td><a href="tatausaha.php?a=editAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-warning fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-warning fa fa-folder-open"></a> </td>
+				                  <td><a href="tatausaha.php?a=editAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-warning fa fa-edit"></a>  <a href="tatausaha.php?a=deleteAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-danger fa fa-trash-o"></a>  <a href="tatausaha.php?a=detailAbsensiMahasiswa&id=<?php echo $row['ID_KEHADIRAN_DOSEN']; ?>" class="btn btn-info fa fa-folder-open"></a> </td>
 				                </tr>
 				                
 				                <?php

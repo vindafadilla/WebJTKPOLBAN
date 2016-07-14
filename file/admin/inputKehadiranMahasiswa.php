@@ -26,7 +26,7 @@
                         <option>- Pilihan -</option>
                         <?php
                         $query = "SELECT * FROM `mhs`;";
-                        include('../../user.login.php');
+                        include('../../inc/class-general.php');
                             $user = new UserData(); 
                             $user->konek_db();
 

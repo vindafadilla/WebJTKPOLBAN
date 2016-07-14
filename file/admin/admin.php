@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+
+<?php 
+    session_start();
+    if($_SESSION['role'] != 'admin'){
+        header("location:../../index.php");
+    }
+    include('class-admin.php');
+    if(isset($_GET['logout'])){
+        $user = new Admin();    
+        $user->logout('role');
+        header("location:admin.php");
+    }
+    $user = new Admin();
+    $user->konek_db();
+    $user->set_data_admin($_SESSION['user'], $_SESSION['pass'], $mysqli);
+?>
+
 <html>
 <head>
   <title>Jurusan Teknik Komputer dan Informatika POLBAN</title>
@@ -49,7 +66,7 @@ else{
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="admin.php?logout=1"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -119,13 +136,7 @@ else{
         <!-- /#page-wrapper -->
         <!-- ISI -->
 
-        <!-- FOOTER -->
-        <div class="navbar-fixed-bottom sub-footer-edit">
-            <div class="copyright text-center">
-              &copy; Day 2016 by <a target="_blank" href="#">Kelompok Rony</a>.All Rights Reserved.
-            </div>
-        </div>
-        <!-- FOOTER -->
+        
 
     </div>
     <!-- /#wrapper -->

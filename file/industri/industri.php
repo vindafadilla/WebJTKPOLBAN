@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+    if($_SESSION['role'] != 'industri'){
+        header("location:../../index.php");
+    }
+    include('class-industri.php');
+    if(isset($_GET['logout'])){
+        $user = new Industri();    
+        $user->logout('role');
+        header("location:industri.php");
+    }
+    $user = new Industri();
+    $user->konek_db();
+    $user->set_data_industri($_SESSION['user'], $_SESSION['pass'], $mysqli);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +52,7 @@ else{
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> PT. ABC <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user->get_identitas(); ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -49,7 +65,7 @@ else{
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="industri.php?logout=1"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -65,10 +81,10 @@ else{
                     <li class="sidebar-profile-edit">
                       <ul class="identity-profile">
                           <li class="text-center">
-                            <b>PT. ABC</b>
+                            <b><?php echo $user->get_nama(); ?></b>
                           </li>
                           <li class="text-center">
-                            <i>Administrator Industry</i>
+                            <i><?php echo $user->get_identitas(); ?></i>
                           </li>
                         </ul>
                     </li>
@@ -79,18 +95,10 @@ else{
                         <a href="#"><i class="fa fa-fw fa-desktop"></i> Cari Mahasiswa  </a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Forms <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="industri.php?content=<?php echo "inputlowongan.php"?>">Lowongan Kerja</a>
-                            </li>
-                            <li>
-                                <a href="industri.php?content=<?php echo "inputBeasiswa.php"?>">Beasiswa</a>
-                            </li>
-                            <li>
-                                <a href="#">Saran</a>
-                            </li>
-                        </ul>
+                        <a href="industri.php?content=<?php echo "../semua/beasiswa.php"?>"><i class="fa fa-fw fa-child"></i> Beasiswa</a>
+                    </li>
+                    <li>
+                        <a href="industri.php?content=<?php echo "../semua/saran.php"?>"><i class="fa fa-fw fa-comments"></i> Saran</a>
                     </li>
                 </ul>
             </div>
@@ -143,8 +151,20 @@ else{
         window.history.back();
       }
     </script>
+    
+    <script type="text/javascript">
+      tinymce.init({
+        selector : '#isibeasiswa'
+      });
+    </script>
 
     <script type="text/javascript">
+      tinymce.init({
+        selector : '#isilowongan'
+      });
+    </script>
+
+   <script type="text/javascript">
       tinymce.init({
         selector : '#mytextarea'
       });

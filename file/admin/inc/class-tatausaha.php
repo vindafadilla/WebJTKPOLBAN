@@ -6,11 +6,11 @@
 ** Penjelasan...: Kumpulan fungsi untuk forum *** 
 ***********************************************************/ 
 // cegah pengaksesan langsung dari browser 
- include('../../../inc/class-general.php');
+ include('../../../class-general.php');
  //include('../inc/class-berita.php');
 
 
-class Tatausaha extends User {
+class Tatausaha extends UserData {
 	// fungsi untuk mengkoneksikan dengan MySQL server 
 
 	var $nama;
