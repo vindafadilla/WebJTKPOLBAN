@@ -14,8 +14,8 @@
 		        <div class="row" align="center">
 				   	<div id="skin">
 				    	<p class="icon"></p>
-				    	<a href="#" class="fdw_left">Nilai</a>
-				    	<a href="#" class="fdw_right">Kehadiran</a>
+				    	<a href="mahasiswa.php?content=<?php echo "daftarnilai.php"?>" class="fdw_left">Nilai</a>
+				    	<a href="mahasiswa.php?content=<?php echo "KehadiranPribadi.php"?>" class="fdw_right">Kehadiran</a>
 				   	</div>
 		        </div>
 		    </div>

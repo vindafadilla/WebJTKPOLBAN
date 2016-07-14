@@ -1,8 +1,25 @@
+<?php 
+    session_start();
+    if($_SESSION['role'] != 'mahasiswa'){
+        header("location:../../index.php");
+    }
+    include('class-mahasiswa.php');
+    if(isset($_GET['logout'])){
+        $user = new Mahasiswa();    
+        $user->logout('role');
+        header("location:mahasiswa.php");
+    }
+    $user = new Mahasiswa();
+    $user->konek_db();
+    $user->set_data_mhs($_SESSION['user'], $_SESSION['pass'], $mysqli);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Jurusan Teknik Komputer dan Informatika POLBAN</title>
   <?php include 'panggil.php' ?>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <?php 
@@ -12,6 +29,8 @@ if(!isset($_GET['content'])){
 else{
   $vcontent = $_GET['content'];
 }
+
+$active[$vcontent] = "";
 ?>
 
 <body>
@@ -36,7 +55,7 @@ else{
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Rony Natakusumah <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user->get_nama(); ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -49,7 +68,7 @@ else{
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="mahasiswa.php?logout=1"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -65,30 +84,30 @@ else{
                     <li class="sidebar-profile-edit">
                       <ul class="identity-profile">
                           <li class="text-center">
-                            <b>Rony Natakusumah</b>
+                            <b><?php echo $user->get_nama(); ?></b>
                           </li>
                           <li class="text-center">
-                            <i>D3 - Teknik Informatika</i>
+                            <i><?php echo $user->get_role(); ?></i>
                           </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li class="<?php if(isset($active['dashboard.php'])) echo "active";?>">
                         <a href="mahasiswa.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="mahasiswa.php?content=<?php echo "calendaracademic.php"?>"><i class="fa fa-fw fa-calendar"></i> Calendar Academic</a>
+                    <li class="<?php if(isset($active['../semua/calendaracademic.php'])) echo "active";?>">
+                        <a href="mahasiswa.php?content=<?php echo "../semua/calendaracademic.php"?>"><i class="fa fa-fw fa-calendar"></i> Calendar Academic</a>
                     </li>
-                    <li>
-                        <a href="mahasiswa.php?content=<?php echo "beasiswa.php"?>"><i class="fa fa-fw fa-child"></i> Beasiswa</a>
+                    <li class="<?php if(isset($active['../semua/beasiswa.php'])) echo "active";?>">
+                        <a href="mahasiswa.php?content=<?php echo "../semua/beasiswa.php"?>"><i class="fa fa-fw fa-child"></i> Beasiswa</a>
                     </li>
-                    <li>
-                        <a href="mahasiswa.php?content=<?php echo "loker.php"?>"><i class="fa fa-fw fa-table"></i> Lowongan Kerja</a>
+                    <li class="<?php if(isset($active['../semua/loker.php'])) echo "active";?>">
+                        <a href="mahasiswa.php?content=<?php echo "../semua/loker.php"?>"><i class="fa fa-fw fa-table"></i> Lowongan Kerja</a>
                     </li>
-                    <li>
-                        <a href="mahasiswa.php?content=<?php echo "searchalumni.php"?>"><i class="fa fa-fw fa-search"></i> Search Alumni</a>
+                    <li class="<?php if(isset($active['../semua/searchalumni.php'])) echo "active";?>">
+                        <a href="mahasiswa.php?content=<?php echo "../semua/searchalumni.php"?>"><i class="fa fa-fw fa-search"></i> Search Alumni</a>
                     </li>
-                    <li>
-                        <a href="mahasiswa.php?content=<?php echo "saran.php"?>"><i class="fa fa-fw fa-sticky-note"></i> Saran</a>
+                    <li class="<?php if(isset($active['../semua/saran.php'])) echo "active";?>">
+                        <a href="mahasiswa.php?content=<?php echo "../semua/saran.php"?>"><i class="fa fa-fw fa-comments"></i> Saran</a>
                     </li>
                 </ul>
             </div>
@@ -128,7 +147,7 @@ else{
 
     <script>
         $(document).ready(function() {
-            $('#calendar1').fullCalendar({
+            $('#calendar').fullCalendar({
                 dayClick: function() {
                     alert('a day has been clicked!');
                 }

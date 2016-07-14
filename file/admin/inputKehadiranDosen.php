@@ -20,8 +20,8 @@
           <div class="panel-body">
 
             <div class="form-group">
-                <label for="id" class="col-md-6 control-label">Dosen</label>
-                <div class="col-md-6">
+                <label for="id" class="col-md-2">Dosen</label>
+                <div class="col-md-10">
                     <select name="ID_DOSEN" class="form-control">
                         <option>- Pilihan -</option>
                         <?php
@@ -41,8 +41,8 @@
             </div>
               
              <div class="form-group">
-                  <label for="judulinfo" class="col-md-6 control-label">Masuk</label>
-                  <div class="col-md-6">
+                  <label for="judulinfo" class="col-md-2">Masuk</label>
+                  <div class="col-md-10">
                       <input type="text" class="form-control" name="MASUK" maxlength="60" required/>
                   </div>
             </div>
@@ -50,8 +50,8 @@
            
 
             <div class="form-group">
-                  <label for="tgl" class="col-md-6 control-label">Alpha</label>
-                  <div class="col-md-6">
+                  <label for="tgl" class="col-md-2">Alpha</label>
+                  <div class="col-md-10">
                       <input type="text" class="form-control" name="ALFA" maxlength="10" required/>
                   </div>
             </div>

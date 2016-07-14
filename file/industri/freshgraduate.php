@@ -8,6 +8,11 @@
         </div>
     </div>
 
+    <?php 
+      $index=1;
+      $dataBarang = $mysqli->query("SELECT * FROM freshgraduate ORDER BY nim");
+    ?>
+
     <div class="row">
         <div class="col-md-12 dataTable_wrapper">
             <table class="table table-striped table-bordered " id="datatabel">
@@ -16,36 +21,27 @@
                         <td>No</td>
                         <td>Nama Lengkap</td>
                         <td>Angkatan</td>
+                        <td>Tahun Lulus</td>
                         <td>Skill</td>
                     </tr>
                 </thead>
-                
+
+    <?php
+    while($query = $dataBarang->fetch_assoc()){ 
+    ?>                   
                 <tbody>
                     <tr>
-                      <td class="text-center">1</td>
-                      <td>Bayu Arafli Fauzi</td>
-                      <td>2014</td>
-                      <td>Php</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Bayu Arafli Fauzi</td>
-                      <td>2014</td>
-                      <td>Php</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Bayu Arafli Fauzi</td>
-                      <td>2014</td>
-                      <td>Php</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Bayu Arafli Fauzi</td>
-                      <td>2014</td>
-                      <td>Php</td>
+                      <td class="text-center"><?php echo $index;?></td>
+                      <td><?php echo $query['nama'];?></td>
+                      <td><?php echo $query['angkatan'];?></td>
+                      <td><?php echo $query['tahun_lulus'];?></td>
+                      <td><?php echo $query['keahlian'];?></td>
                     </tr>
                 </tbody>
+    <?php
+        $index++;
+        }
+    ?>
             </table>
         </div>
     </div>

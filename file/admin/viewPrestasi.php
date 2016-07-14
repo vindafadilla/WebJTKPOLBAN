@@ -1,6 +1,6 @@
 <?php
 include('../../inc/class-general.php');
-$berita= new User();
+$berita= new UserData();
 $berita->konek_db();
 
     
